@@ -1,0 +1,16 @@
+[package]
+name = "{{project-name}}"
+authors = ["{{authors}}"]
+edition = "2021"
+publish = false
+
+[package.metadata.docs.rs]
+targets = ["thumbv7em-none-eabihf"]
+
+[dependencies]
+cortex-m = { version = "0.7.7", features = ["critical-section-single-core"] }
+max7800x-hal = { version = "0.3.0", features = ["rt"] }
+panic-halt = "1.0.0"
+
+# Uncomment if you want to use semihosting,
+# cortex-m-semihosting = "0.5"

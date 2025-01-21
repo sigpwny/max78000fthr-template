@@ -1,0 +1,31 @@
+{
+    /* 
+     * Requires the Rust Language Server (rust-analyzer) and Cortex-Debug extensions
+     * https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer
+     * https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug
+     */
+    "version": "0.2.0",
+    "configurations": [
+        {
+            /* Configuration for the MAX78000FTHR board */
+            "type": "cortex-debug",
+            "request": "launch",
+            "name": "Debug (OpenOCD)",
+            "servertype": "openocd",
+            "windows": {
+                "gdbPath": "C:/MaximSDK/Tools/GNUTools/10.3/bin/arm-none-eabi-gdb.exe",
+                "serverpath": "C:/MaximSDK/Tools/OpenOCD/openocd.exe",
+            },
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": "Cargo Build (debug)",
+            "runToEntryPoint": "main",
+            "executable": "${workspaceRoot}/target/thumbv7em-none-eabihf/debug/{{project-name}}",
+            "device": "MAX78000",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/max78000.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/svd/max78000.svd"
+        }
+    ]
+}
