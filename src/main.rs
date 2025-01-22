@@ -47,31 +47,6 @@ fn main() -> ! {
 
     console.write_bytes(b"Hello, world!\r\n");
 
-    // Create a new TRNG peripheral instance
-    // let trng = hal::trng::Trng::new(p.trng, &mut gcr.reg);
-    // for _ in 0..3 {
-    //     // Generate a random 32-bit number
-    //     let random_number = trng.next_u32();
-    //     // heprintln!("Random number: {}", random_number);
-    //     // Fill an array with random bytes
-    //     let mut buffer = [0u8; 16];
-    //     trng.fill_bytes(&mut buffer);
-    //     // heprintln!("Random bytes: {:?}", buffer);
-    // }
-
-    // Test countdown with UART and delay
-    console.write_bytes(b"5\r\n");
-    delay.delay_ms(1000);
-    console.write_bytes(b"4\r\n");
-    delay.delay_ms(1000);
-    console.write_bytes(b"3\r\n");
-    delay.delay_ms(1000);
-    console.write_bytes(b"2\r\n");
-    delay.delay_ms(1000);
-    console.write_bytes(b"1\r\n");
-    delay.delay_ms(1000);
-    console.write_bytes(b"0\r\n");
-
     // Initialize the GPIO2 peripheral
     let pins = hal::gpio::Gpio2::new(p.gpio2, &mut gcr.reg).split();
     // Enable output mode for the RGB LED pins
